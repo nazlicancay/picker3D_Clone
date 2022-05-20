@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void MoveForward()
     {
-        transform.DOMoveZ(32,10f).SetUpdate(UpdateType.Fixed);
+        transform.DOMoveZ(32,20f).SetUpdate(UpdateType.Fixed);
     }
 
 
