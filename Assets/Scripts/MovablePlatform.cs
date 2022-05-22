@@ -7,7 +7,7 @@ using TMPro;
 public class MovablePlatform : MonoBehaviour
 {
     public int BallNumberToPass;
-    public int BallStored = 0 ;
+    //public int BallStored = 0 ;
     public GameObject balls;
     public List<GameObject> Pointballs;
     public TextMeshPro PointcountText;
@@ -44,12 +44,12 @@ public class MovablePlatform : MonoBehaviour
         transform.DOLocalMoveY(0, 2f).OnComplete(() => ContinueGame()); 
     }
 
-    public void BallStoredCount()
+ /*   public void BallStoredCount()
     {
         BallStored += 1;
         Debug.Log("ball");
     }
-
+ */
     public void ContinueGame()
     {
         PlayerMovement.Instance.SpeedUp();
