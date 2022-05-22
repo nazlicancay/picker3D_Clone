@@ -7,19 +7,23 @@ public class PlayerCollisionController : MonoBehaviour
     public UnityEvent OnBallInside;
     public UnityEvent OnBallOutside;
 
-    [ContextMenu("On Trigger Enter")]
-    public void OnTriggerEnterr()
+    public void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("Ball"))
+        {
+            OnBallInside?.Invoke();
 
-        OnBallInside?.Invoke();
+        }
 
     }
 
-    [ContextMenu("On Trigger Exit")]
-    public void OnTriggerExitt()
+    public void OnTriggerExit(Collider other)
     {
+        if (other.CompareTag("Ball"))
+    {
+            OnBallOutside?.Invoke();
 
-        OnBallOutside?.Invoke();
+        }
 
     }
 
