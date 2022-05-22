@@ -9,7 +9,7 @@ public class FinishLineCreator : MonoBehaviour
     public GameObject scoreCube;
     public List<GameObject> scoreCubes = new List<GameObject>();
     public TextMeshPro Text;
-    int Score = 100;
+    int Score = 150;
     public int MaxScore;
     float posy;
 
