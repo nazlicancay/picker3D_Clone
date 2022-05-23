@@ -23,6 +23,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
     public Rigidbody rb;
     public float smoothTime = 0.3F;
     private Vector3 velocity = Vector3.zero;
+    public float Jumpforward;
 
     
     private void FixedUpdate()
@@ -45,8 +46,9 @@ public class PlayerMovement : Singleton<PlayerMovement>
             Moveup = false;
             Moveforward = false;
             playerTransform.DORotate(new Vector3(0, 0, 0), 0.5f);
-            transform.DOJump(new Vector3(transform.position.x, 1f, transform.position.z + 15f), 10f, 1, 1f);
+            transform.DOJump(new Vector3(transform.position.x, 0.6f, transform.position.z + Jumpforward), 4f, 1, 4f);
             Jump = false;
+            Debug.Log(Jumpforward);
             Debug.Log("jumpp");
         }
     }

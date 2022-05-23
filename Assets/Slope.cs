@@ -14,8 +14,15 @@ public class Slope : MonoBehaviour
         {
             PlayerMovement.Instance.playerTransform.DORotate( new Vector3(-20,0,0),0.5f);
             PlayerMovement.Instance.MoveUp();
+            UIManager.Instance.TapToSpeed.gameObject.SetActive(true);
 
           
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        UIManager.Instance.TapToSpeed.gameObject.SetActive(false);
+
     }
 }
