@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-public class PlayerCollisionController : MonoBehaviour
+public class PlayerCollisionController : Singleton<PlayerCollisionController>
 {
     public UnityEvent OnBallInside;
     public UnityEvent OnBallOutside;
+    public int BallCount = 0;
 
     public void OnTriggerEnter(Collider other)
     {
@@ -22,9 +23,12 @@ public class PlayerCollisionController : MonoBehaviour
         if (other.CompareTag("Ball"))
     {
             OnBallOutside?.Invoke();
+            
 
         }
 
     }
+
+    
 
 }

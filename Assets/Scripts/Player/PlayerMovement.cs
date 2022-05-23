@@ -14,13 +14,17 @@ public class PlayerMovement : Singleton<PlayerMovement>
     private bool once = true;
     public float clampval;
     public bool Moveforward;
+    public bool Moveup;
+    private bool Jump;
+
 
     [SerializeField] private Transform transformWihtoutlerp;
-    [SerializeField] private Transform playerTransform;
-
+    public Transform playerTransform;
+    public Rigidbody rb;
     public float smoothTime = 0.3F;
     private Vector3 velocity = Vector3.zero;
 
+    
     private void FixedUpdate()
     {
         UpdatePlayerPos();
@@ -29,11 +33,36 @@ public class PlayerMovement : Singleton<PlayerMovement>
         {
             transform.position += Vector3.forward * speed * Time.fixedDeltaTime;
         }
+
+        if (Moveup)
+        {
+            transform.position += new Vector3(0, 0.5f, 0.5f) * speed * Time.fixedDeltaTime;
+            
+        }
+
+        if (Jump)
+        {
+            Moveup = false;
+            Moveforward = false;
+            //transform.DOJump();
+            Debug.Log("jumpp");
+        }
     }
 
+
+   
+    public void JumpMove()
+    {
+        Jump = true;
+    }
     public void MoveForward()
     {
         Moveforward = true;
+    }
+
+    public void MoveUp()
+    {
+        Moveup = true;
     }
 
 

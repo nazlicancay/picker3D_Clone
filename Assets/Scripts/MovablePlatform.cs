@@ -33,6 +33,7 @@ public class MovablePlatform : MonoBehaviour
             {
                 MovePlatformUp();
             }
+            
            
            
         }
