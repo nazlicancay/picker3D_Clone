@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using MoreMountains.NiceVibrations;
 using UnityEngine;
 using UnityEngine.Events;
 public class PlayerCollisionController : Singleton<PlayerCollisionController>
@@ -12,6 +13,7 @@ public class PlayerCollisionController : Singleton<PlayerCollisionController>
     {
         if (other.CompareTag("Ball"))
         {
+            MMVibrationManager.Vibrate();
             OnBallInside?.Invoke();
 
         }
@@ -19,6 +21,7 @@ public class PlayerCollisionController : Singleton<PlayerCollisionController>
         if (other.gameObject.CompareTag("Win"))
         {
             UIManager.Instance.WinPanel.SetActive(true);
+            MMVibrationManager.Vibrate();
         }
 
     }

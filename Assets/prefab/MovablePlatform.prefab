@@ -232,8 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 920d5acab22bc4180aec1bb26ea4acd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BallNumberToPass: 4
-  BallStored: 0
+  BallNumberToPass: 0
   balls: {fileID: 3250314281767143783}
   Pointballs: []
   PointcountText: {fileID: 6230316808434970724}

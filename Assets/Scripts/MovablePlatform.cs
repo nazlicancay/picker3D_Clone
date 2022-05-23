@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
+using MoreMountains.NiceVibrations;
 
 public class MovablePlatform : MonoBehaviour
 {
@@ -18,16 +19,15 @@ public class MovablePlatform : MonoBehaviour
     private void Update()
     {
         PointcountText.text = (Pointballs.Count + " /" + BallNumberToPass);
-        if(PlayerMovement.Instance.speed <= 0)
-        {
-            CheckGameStatus();
-        }
+       
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Ball"))
         {
+
             Collider colider = other.gameObject.GetComponent<Collider>();
+            colider.enabled = false;
             colider.gameObject.SetActive(false);
             Rigidbody rb =  other.GetComponent<Rigidbody>();
             rb.useGravity = false;
@@ -35,6 +35,11 @@ public class MovablePlatform : MonoBehaviour
 
             Pointballs.Add(other.gameObject);
             other.transform.parent = balls.transform;
+            if (!once)
+            {
+                once = true;
+                Invoke("CheckGameStatus", 0.7f);
+            }
 
         }
     }
@@ -62,20 +67,19 @@ public class MovablePlatform : MonoBehaviour
 
     public void CheckGameStatus()
     {
-        Debug.Log("pointballs " + Pointballs.Count);
-        Debug.Log("ball numbers " + BallNumberToPass);
 
         if (Pointballs.Count >= BallNumberToPass)
         {
             MovePlatformUp();
+            Destroy(this);
         }
 
         else
         {
-          
-                once = true;
-                //UIManager.Instance.FailPanel.SetActive(true);
-            
+      
+         UIManager.Instance.FailPanel.SetActive(true);
+         MMVibrationManager.Vibrate();
+
         }
     }
 
