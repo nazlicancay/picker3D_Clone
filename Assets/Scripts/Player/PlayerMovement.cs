@@ -44,7 +44,9 @@ public class PlayerMovement : Singleton<PlayerMovement>
         {
             Moveup = false;
             Moveforward = false;
-            //transform.DOJump();
+            playerTransform.DORotate(new Vector3(0, 0, 0), 0.5f);
+            transform.DOJump(new Vector3(transform.position.x, 1f, transform.position.z + 15f), 10f, 1, 1f);
+            Jump = false;
             Debug.Log("jumpp");
         }
     }
