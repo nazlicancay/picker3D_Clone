@@ -16,6 +16,11 @@ public class PlayerCollisionController : Singleton<PlayerCollisionController>
 
         }
 
+        if (other.gameObject.CompareTag("Win"))
+        {
+            UIManager.Instance.WinPanel.SetActive(true);
+        }
+
     }
 
     public void OnTriggerExit(Collider other)
@@ -28,6 +33,8 @@ public class PlayerCollisionController : Singleton<PlayerCollisionController>
         }
 
     }
+
+   
 
     
 

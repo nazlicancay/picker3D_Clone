@@ -12,7 +12,7 @@ public class FinishLineCreator : MonoBehaviour
     int Score = 100;
     public int MaxScore;
     float posy;
-
+    public Transform FinisLinePos;
     void Update()
     {
 
@@ -25,6 +25,7 @@ public class FinishLineCreator : MonoBehaviour
         if (Score < MaxScore)
         { 
             GameObject clone = Instantiate(scoreCube);
+            clone.transform.parent = FinisLinePos;
             posy = clone.transform.position.z;
             scoreCubes.Add(clone);
             clone.transform.DOMoveZ( posy + scoreCubes.Count*4, 0.5f);

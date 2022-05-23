@@ -72,11 +72,10 @@ public class MovablePlatform : MonoBehaviour
 
         else
         {
-            if (!once)
-            {
+          
                 once = true;
                 //UIManager.Instance.FailPanel.SetActive(true);
-            }
+            
         }
     }
 
